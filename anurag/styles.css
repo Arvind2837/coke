@@ -1,0 +1,844 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #ce2c27;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar styles */
+
+nav {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    background-color:#ce2c27;
+}
+
+#logo {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+
+nav img {
+    height: 150px;
+    width: 150px;
+    background-color: transparent;
+    object-fit: contain;
+    transform: translateY(15px);
+}
+
+@media screen and (max-width: 768px) {
+    #logo {
+        margin-top: 20px;
+    }
+    
+    nav img {
+        transform: translateY(3px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #logo {
+        margin-top: 15px;
+    }
+    
+    nav img {
+        transform: translateY(2px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #logo {
+        margin-top: 50px;
+    }
+
+    nav img {
+        height: 160px;
+        width: 160px;
+        transform: translateY(20px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #logo {
+        margin-top: 40px;
+    }
+
+    nav img {
+        height: 140px;
+        width: 140px;
+        transform: translateY(15px);
+    }
+}
+
+nav ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin-right: 200px;
+    background-color: transparent;
+}
+
+nav ul li {
+    user-select: none;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 20px;
+    color: black;
+    background-color: transparent;
+    transition: color 0.3s ease;
+}
+
+nav ul li:hover {
+    color: #ffffff;
+}
+
+nav ul li a {
+    color: inherit;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+/* Hamburger Menu styles */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    background-color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Media Query for Mobile Navigation */
+@media screen and (max-width: 768px) {
+    nav {
+        padding: 0 20px;
+    }
+
+    #logo {
+        margin-top: 30px;
+    }
+
+    nav img {
+        height: 140px;
+        width: 140px;
+    }
+
+    /* Update hamburger styles in mobile media query */
+    @media screen and (max-width: 768px) {
+        .hamburger {
+            display: block;
+            z-index: 1001;
+            position: fixed;
+            right: 20px;
+            top: 35px;
+            background-color: transparent;
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        .hamburger {
+            right: 15px;
+            top: 30px;
+        }
+    }
+
+    nav ul {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        height: 100vh;
+        width: 50%;
+        background-color: #ce2c27;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+        transform: translateX(100%);
+        margin: 0;
+        padding-top: 100px;
+        gap: 25px;
+        z-index: 1000;
+    }
+
+    nav ul.active {
+        right: 0;
+        transform: translateX(0);
+    }
+
+    .my-button {
+        position: fixed;
+        right: -100%;
+        bottom: auto;
+        top: 350px;
+        transition: 0.5s ease;
+        z-index: 1000;
+    }
+
+    nav ul.active + .my-button {
+        right: calc(25% - 50px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hamburger {
+        right: 15px;
+        top: 30px;
+    }
+}
+
+.my-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.my-button a {
+    color: inherit;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.my-button:hover {
+    background-color: black;
+    color: white;
+    transform: scale(1.05);
+}
+
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.nav-overlay.active {
+    display: block;
+}
+
+.nav-links {
+    right: -50%;
+    width: 50%;
+    left: auto;
+}
+
+.nav-links.active {
+    right: 0;
+}
+
+/* ---end navbar---- */
+
+/* Main Section styles */
+.main-section {
+    margin-top: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    min-height: 100vh;
+}
+
+.main-section img {
+    width: 45%;
+    height: 650px;
+    object-fit: contain;
+}
+
+@keyframes textFloat {
+    0% {
+        transform: translateY(0);
+        text-shadow: 2px 2px 0px #000;
+    }
+    50% {
+        transform: translateY(-10px);
+        text-shadow: 4px 4px 0px #000;
+    }
+    100% {
+        transform: translateY(0);
+        text-shadow: 2px 2px 0px #000;
+    }
+}
+
+#feet {
+    width: 45%;
+    color: black;
+    font-size: 90px;
+    line-height: 1.3;
+    font-weight: bold;
+    text-align: left;
+    animation: textFloat 3s ease-in-out infinite;
+}
+
+#btext {
+    color: white;
+    display: inline-block;
+    animation: textFloat 3s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+#element {
+    display: inline-block;
+    animation: textFloat 3s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+@media screen and (max-width: 768px) {
+    .main-section {
+        padding: 0 30px;
+    }
+
+    .main-section img {
+        width: 48%;
+        height: 450px;
+    }
+
+    #feet {
+        width: 48%;
+        font-size: 60px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main-section {
+        margin-top: 0;
+        min-height: 35vh;
+    }
+
+    #one img {
+        width: 45%;
+        height: 160px;
+        top: 0;
+    }
+
+    #two {
+        width: 45%;
+        top: -20px;
+    }
+
+    #feet {
+        font-size: 24px;
+        line-height: 1;
+    }
+
+    .store-section {
+        margin-top: -30px;
+        padding: 0;
+    }
+
+    #heading {
+        font-size: 20px;
+        margin-bottom: 0;
+    }
+
+    hr {
+        width: 100px;
+        margin: 1px auto;
+        border: 1px solid black;
+    }
+
+    .store-links {
+        gap: 5px;
+        margin-top: 1px;
+    }
+
+    #flip, #amazom {
+        height: 30px;
+        width: 30px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #one img {
+        width: 45%;
+        height: 350px;
+        right: 10px;
+    }
+
+    #two {
+        width: 45%;
+        left: 20px;
+    }
+
+    #feet {
+        font-size: 40px;
+    }
+
+    .icon {
+        left: -60px;
+    }
+
+    #flip, #amazom {
+        height: 60px;
+        width: 60px;
+        margin: 0 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #one img {
+        width: 45%;
+        height: 300px;
+        right: 150px;
+        top: -50px;
+    }
+
+    #two {
+        width: 45%;
+        left: 15px;
+        top: -150px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #two {
+        top: -210px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #two {
+        top: -220px;
+    }
+}
+
+    #feet {
+        font-size: 60px;
+    }
+
+    .icon {
+        top: 200px;
+        left: -80px;
+    }
+
+
+@media screen and (max-width: 576px) {
+    #one img {
+        width: 45%;
+        height: 350px;
+        right: 10px;
+    }
+
+    #two {
+        width: 45%;
+        left: 20px;
+    }
+
+    #feet {
+        font-size: 40px;
+    }
+
+    .icon {
+        left: -60px;
+    }
+
+    #flip, #amazom {
+        height: 60px;
+        width: 60px;
+        margin: 0 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #one img {
+        width: 45%;
+        height: 300px;
+        right: 5px;
+        top: -30px;
+    }
+
+    #two {
+        width: 45%;
+        left: 15px;
+        top: -180px;
+    }
+
+    #feet {
+        font-size: 32px;
+    }
+
+    .store-section {
+        margin-top: -320px;
+        padding: 0 15px;
+        position: relative;
+        z-index: 100;
+    }
+
+    .icon {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    #heading {
+        font-size: 32px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    hr {
+        width: 150px;
+        margin: 10px auto;
+    }
+
+    .store-links {
+        justify-content: center;
+        gap: 25px;
+        margin-top: 15px;
+    }
+
+    #flip, #amazom {
+        height: 65px;
+        width: 65px;
+    }
+}
+@media screen and (max-width: 768px) {
+    #one img {
+        width: 50%;
+        height: 550px;
+        right: 30px;
+        top: 30px;
+    }
+
+    #two {
+        width: 45%;
+        left: 15px;
+        top: -250px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #one img {
+        width: 48%;
+        right: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #one img {
+        width: 45%;
+        right: 15px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #two {
+        top: -210px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #two {
+        top: -220px;
+    }
+}
+
+    #feet {
+        font-size: 60px;
+    }
+
+    .icon {
+        top: 200px;
+        left: -80px;
+    }
+
+
+@media screen and (max-width: 576px) {
+    #one img {
+        width: 45%;
+        height: 350px;
+        right: 10px;
+    }
+
+    #two {
+        width: 45%;
+        left: 20px;
+    }
+
+    #feet {
+        font-size: 40px;
+    }
+
+    .icon {
+        left: -60px;
+    }
+
+    #flip, #amazom {
+        height: 60px;
+        width: 60px;
+        margin: 0 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #one img {
+        width: 45%;
+        height: 300px;
+        right: 5px;
+    }
+
+    #two {
+        width: 45%;
+        left: 15px;
+    }
+
+    #feet {
+        font-size: 32px;
+    }
+
+    .icon {
+        left: -40px;
+    }
+
+    #flip, #amazom {
+        height: 50px;
+        width: 50px;
+        margin: 0 8px;
+    }
+}
+@media screen and (max-width: 768px) {
+    #one img {
+        width: 55%;
+        height: 550px;
+        right: 20px;
+        top: 30px;
+    }
+
+    #two {
+        width: 40%;
+        left: 20px;
+        top: -250px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #two {
+        left: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #two {
+        left: 5px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #one img {
+        width: 60%;
+        height: 450px;
+        right: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #one img {
+        width: 65%;
+        height: 400px;
+        right: 5px;
+    }
+}
+.store-section {
+    margin-top: -100px;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    text-align: center;
+    position: relative;
+}
+
+#heading {
+    font-size: 45px;
+    margin-bottom: 25px;
+    background-color: transparent;
+    text-align: center;
+}
+
+.store-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 25px;
+}
+
+#flip, #amazom {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+    display: block;
+}
+
+@media screen and (max-width: 768px) {
+    .store-section {
+        margin-top: -80px;
+    }
+
+    #heading {
+        font-size: 35px;
+    }
+
+    #flip, #amazom {
+        height: 80px;
+        width: 80px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .store-section {
+        margin-top: -400px;
+        padding: 0 20px;
+        position: relative;
+        z-index: 100;
+    }
+
+    .icon {
+        text-align: center;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    #heading {
+        font-size: 35px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    hr {
+        width: 160px;
+        margin: 10px auto;
+        border: 2.5px solid black;
+    }
+
+    .store-links {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 20px;
+    }
+
+    #flip, #amazom {
+        height: 75px;
+        width: 75px;
+        object-fit: contain;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .store-section {
+        margin-top: -60px;
+    }
+
+    #heading {
+        font-size: 30px;
+    }
+
+    #flip, #amazom {
+        height: 70px;
+        width: 70px;
+    }
+}
+.icon {
+    text-align: right;
+}
+
+#flip:hover, #amazom:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+    .store-section {
+        padding: 0 30px;
+        margin-top: 30px;
+    }
+
+    #heading {
+        font-size: 30px;
+    }
+
+    #flip, #amazom {
+        height: 70px;
+        width: 70px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .store-section {
+        padding: 0 20px;
+        margin-top: 20px;
+    }
+
+    .icon {
+        text-align: center;
+    }
+
+    hr {
+        margin: 15px auto;
+    }
+
+    #heading {
+        font-size: 25px;
+    }
+
+    .store-links {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    #flip, #amazom {
+        height: 60px;
+        width: 60px;
+    }
+}
+.main-section {
+    margin-top: 80px;
+    padding-top: 20px;
+}
+
+@media screen and (max-width: 480px) {
+    .main-section {
+        margin-top: 60px;
+        padding-top: 10px;
+    }
+}
